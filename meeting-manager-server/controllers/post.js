@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 const slugify = require("slugify");
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // console.log(req.body);
   const { title, content, user } = req.body;
   const slug = slugify(title); // The title of the customers will be passed in our api. For example: Michael Son -> api/michael-son
@@ -16,5 +16,14 @@ exports.create = (req, res) => {
       break;
   }
 
-  Post.create({ title, content, user, slug });
+  // If there is no error, We will create a post.
+  try {
+    const post = await Post.create({ title, content, user, slug });
+    res.json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({
+      error: "Duplication error. Please try with different customer name",
+    });
+  }
 };
