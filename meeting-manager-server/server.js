@@ -5,14 +5,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.DATABASE, {})
-  .then(() => console.log("DB connected"))
-  .catch((err) => console.log("DB Error => ", err));
-
 // App - to Invoke express
 const app = express();
+
+// Database - Connect to MongoDB -> We added the following configuration to avoid from deprecation errors that morgan throws on terminal.
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database Connected"))
+  .catch((err) => console.log("Database Error => ", err));
 
 // Middlewares - A section that will in the middle between Client(meeting-manager) and Server(meeting-manager-server)
 app.use(cors());
