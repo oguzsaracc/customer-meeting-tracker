@@ -5,6 +5,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+// Routes - Listing down the imporant ones for the project.
+const postRoutes = require("./routes/post");
+
 // App - to Invoke express
 const app = express();
 
@@ -22,12 +25,8 @@ app.use(cors());
 app.use(morgan("dev")); // Enabling the developer mode for morgan. - To show endpoint in terminal.
 app.use(bodyParser.json()); // To pass .json to make the server understand data and ready for usage.
 
-// Endpoint
-app.get("*", (req, res) => {
-  res.json({
-    data: "Successfully reached nodejs api for customer-meeting-tracker application",
-  });
-}); // It is a way to does not matter what endpoint is, any incoming request getting we will give required response.
+// Endpoint Middlewares
+app.use("/api", postRoutes); // Basically, this prefixed in code to simplify by /api so in routes we do not need to write again and again.
 
 // Server Port
 const port = process.env.PORT || 8000; // In env file, the given port will be different because for developing purposes. In production it could be different in our scenario. Otherwise, as mentioned in code the default(8000) will be used.
