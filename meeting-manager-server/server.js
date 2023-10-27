@@ -5,6 +5,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+// Connect to MongoDB
+mongoose
+  .connect(process.env.DATABASE, {})
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log("DB Error => ", err));
+
 // App - to Invoke express
 const app = express();
 
