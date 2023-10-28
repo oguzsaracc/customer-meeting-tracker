@@ -44,7 +44,7 @@ const Create = () => {
     <div className="container pb-5">
       <Navigation />
       <br />
-      <h1>Create Customer Meeting Notes</h1>
+      <h1>Create Meeting Post</h1>
       <br />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -84,7 +84,7 @@ const Create = () => {
         </div>
         <br />
         <div>
-          <button className="btn btn-primary">Create Note</button>
+          <button className="btn btn-primary">Create</button>
         </div>
       </form>
     </div>

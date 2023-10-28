@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navigation from "./Navigation";
+import { Link } from "react-router-dom";
 
 const SinglePost = (props) => {
   const [post, setPost] = useState("");
@@ -29,6 +30,15 @@ const SinglePost = (props) => {
           {new Date(post.createdAt).toLocaleString()}
         </span>
       </p>
+      <div>
+        <Link
+          to={`/post/update/${post.slug}`}
+          className="btn btn-sm btn-outline-warning"
+        >
+          Update
+        </Link>
+        <button className="btn btn-sm btn-outline-danger m-2">Delete</button>
+      </div>
     </div>
   );
 };
