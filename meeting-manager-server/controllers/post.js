@@ -38,3 +38,15 @@ exports.list = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+exports.read = async (req, res) => {
+  // console.log(req.params.slug);
+  const { slug } = req.params;
+  try {
+    const post = await Post.findOne({ slug }).exec();
+    res.json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

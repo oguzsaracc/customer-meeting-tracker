@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import axios from "axios";
 import "./css/custom-row-note.css";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +30,9 @@ const App = () => {
       {posts.map((post, i) => (
         <div className="row custom-row" key={post._id}>
           <div className="col pt-1 pb-2">
-            <h3>{post.title}</h3>
+            <Link to={`/post/${post.slug}`}>
+              <h3>{post.title}</h3>
+            </Link>
             <p className="lead">{post.content.substring(0, 110)}</p>
             <p>
               Author:
