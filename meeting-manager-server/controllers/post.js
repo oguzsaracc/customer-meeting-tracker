@@ -27,3 +27,14 @@ exports.create = async (req, res) => {
     });
   }
 };
+
+// In here, we will use the employee posts to find all posts with the find method.
+exports.list = async (req, res) => {
+  try {
+    const posts = await Post.find({}).sort({ createdAt: -1 }).exec();
+    res.json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
