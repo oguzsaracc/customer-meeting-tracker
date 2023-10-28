@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Navigation from "./Navigation";
 
 const Create = () => {
   const [state, setState] = useState({
@@ -40,7 +41,9 @@ const Create = () => {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container pb-5">
+      <Navigation />
+      <br />
       <h1>Create Customer Meeting Notes</h1>
       <br />
       <form onSubmit={handleSubmit}>
