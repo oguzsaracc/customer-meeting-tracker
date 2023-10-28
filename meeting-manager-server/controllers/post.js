@@ -50,3 +50,31 @@ exports.read = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+exports.update = async (req, res) => {
+  const { slug } = req.params;
+  const { title, content, user } = req.body;
+  try {
+    const post = await Post.findOneAndUpdate(
+      { slug },
+      { title, content, user },
+      { new: true }
+    ).exec();
+    res.json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+exports.remove = async (req, res) => {
+  // console.log(req.params.slug);
+  const { slug } = req.params;
+  try {
+    const post = await Post.findOneAndRemove({ slug }).exec();
+    res.json({ message: "Post deleted successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
