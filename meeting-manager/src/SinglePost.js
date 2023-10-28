@@ -37,7 +37,6 @@ const SinglePost = (props) => {
         >
           Update
         </Link>
-        <button className="btn btn-sm btn-outline-danger m-2">Delete</button>
       </div>
     </div>
   );

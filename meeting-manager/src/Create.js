@@ -31,7 +31,7 @@ const Create = () => {
         setState({ ...state, title: "", content: "", user: "" });
         // We have to notify the user as well due to process finished sucessfully.
         alert(
-          `Customer title '${response.data.title}' is created successfully`
+          `Customer record '${response.data.title}' is created successfully`
         );
       })
       .catch((error) => {

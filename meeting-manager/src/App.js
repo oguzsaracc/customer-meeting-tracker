@@ -21,6 +21,25 @@ const App = () => {
     fetchPosts();
   }, []);
 
+  const removeConfirm = (slug) => {
+    let removeConfirmAnswer = window.confirm(
+      "Are you sure you want to delete? This action cannot be undone"
+    );
+    if (removeConfirmAnswer) {
+      removeItem(slug);
+    }
+  };
+
+  const removeItem = (slug) => {
+    axios
+      .delete(`${process.env.REACT_APP_API}/post/${slug}`)
+      .then((response) => {
+        alert(response.data.message);
+        fetchPosts();
+      })
+      .catch((error) => alert("Error due to delete customer record"));
+  };
+
   return (
     <div className="container pb-5">
       <Navigation />
@@ -55,7 +74,10 @@ const App = () => {
                 >
                   Update
                 </Link>
-                <button className="btn btn-sm btn-outline-danger m-2">
+                <button
+                  onClick={() => removeConfirm(post.slug)}
+                  className="btn btn-sm btn-outline-danger m-2"
+                >
                   Delete
                 </button>
               </div>

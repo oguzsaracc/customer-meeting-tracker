@@ -72,7 +72,7 @@ exports.remove = async (req, res) => {
   const { slug } = req.params;
   try {
     const post = await Post.findOneAndRemove({ slug }).exec();
-    res.json({ message: "Post deleted successfully" });
+    res.json({ message: "A record deleted successfully" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });

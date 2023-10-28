@@ -59,7 +59,6 @@ const Update = (props) => {
           value={title}
           type="text"
           className="form-control"
-          placeholder="Please enter customer's title"
           required
         />
       </div>
@@ -71,7 +70,6 @@ const Update = (props) => {
           value={content}
           type="text"
           className="form-control"
-          placeholder="Please enter customer's details"
           required
         />
       </div>
@@ -83,7 +81,6 @@ const Update = (props) => {
           value={user}
           type="text"
           className="form-control"
-          placeholder="Please enter your name"
           required
         />
       </div>
