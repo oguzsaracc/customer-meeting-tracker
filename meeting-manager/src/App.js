@@ -30,20 +30,36 @@ const App = () => {
       {posts.map((post, i) => (
         <div className="row custom-row" key={post._id}>
           <div className="col pt-1 pb-2">
-            <Link to={`/post/${post.slug}`}>
-              <h3>{post.title}</h3>
-            </Link>
-            <p className="lead">{post.content.substring(0, 110)}</p>
-            <p>
-              Author:
-              <span className="badge" style={{ color: "black" }}>
-                {post.user}
-              </span>{" "}
-              Published on:
-              <span className="badge" style={{ color: "black" }}>
-                {new Date(post.createdAt).toLocaleString()}
-              </span>
-            </p>
+            <div className="row">
+              <div className="col-md-10">
+                <Link to={`/post/${post.slug}`}>
+                  <h3>{post.title}</h3>
+                </Link>
+                <p className="lead">{post.content.substring(0, 110)}</p>
+                <p>
+                  Author:
+                  <span className="badge" style={{ color: "black" }}>
+                    {post.user}
+                  </span>{" "}
+                  Published on:
+                  <span className="badge" style={{ color: "black" }}>
+                    {new Date(post.createdAt).toLocaleString()}
+                  </span>
+                </p>
+              </div>
+
+              <div className="col-md-2">
+                <Link
+                  to={`/post/update/${post.slug}`}
+                  className="btn btn-sm btn-outline-warning"
+                >
+                  Update
+                </Link>
+                <button className="btn btn-sm btn-outline-danger m-2">
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       ))}

@@ -10,7 +10,7 @@ const SinglePost = (props) => {
       .get(`${process.env.REACT_APP_API}/post/${props.match.params.slug}`)
       .then((response) => setPost(response.data))
       .catch((error) => alert("Error due to load single customer note"));
-  }, []);
+  }, [props.match.params.slug]);
 
   return (
     <div className="container pb-5">
