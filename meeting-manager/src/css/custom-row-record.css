@@ -1,0 +1,16 @@
+/* Styling for a custom row element */
+
+/* Base styling for the custom row */
+.custom-row {
+  background-color: #f9f9f9; /* Light background color */
+  border: 1px solid #ddd; /* Light border with subtle contrast */
+  padding: 10px; /* Inner spacing for content */
+  margin-bottom: 10px; /* Spacing between rows */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Hover effect for the custom row */
+.custom-row:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}

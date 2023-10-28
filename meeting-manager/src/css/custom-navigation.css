@@ -1,0 +1,24 @@
+/* Styling for the custom navigation component */
+
+/* Base styling for the navigation */
+.custom-navigation {
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Light border with subtle contrast */
+    padding: 10px; /* Inner spacing for content */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+  
+  /* Styling for navigation links */
+  .custom-navigation a {
+    color: #333; /* Dark color for links */
+    text-decoration: none; /* Remove underline from links */
+    margin-right: 10px; /* Spacing between links */
+    font-weight: bold; /* Bold font for emphasis */
+  }
+  
+  /* Hover effect for navigation links */
+  .custom-navigation a:hover {
+    color: #555; /* Slightly darker color on hover */
+  }
+  

@@ -19,7 +19,7 @@ const Update = (props) => {
         const { title, content, slug, user } = response.data;
         setState({ title, content, slug, user });
       })
-      .catch((error) => alert("Error due to load single customer note"));
+      .catch((error) => alert("Error due to load single customer record"));
   }, [props.match.params.slug]);
 
   // Creating a onChange to create an event handler for input changes.

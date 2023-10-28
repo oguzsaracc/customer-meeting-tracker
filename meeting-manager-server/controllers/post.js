@@ -1,5 +1,5 @@
-const Post = require("../models/post");
-const slugify = require("slugify");
+const Post = require("../models/post"); // Importing the Post model for database operations.
+const slugify = require("slugify"); // Importing the slugify library for creating slugs.
 
 exports.create = async (req, res) => {
   // console.log(req.body);
@@ -9,21 +9,21 @@ exports.create = async (req, res) => {
   // Validation - Before the creation of post method we are validating the data.
   switch (true) {
     case !title:
-      return res.status(400).json({ error: "Title is required" });
+      return res.status(400).json({ error: "Customer title is required" });
       break;
     case !content:
       return res.status(400).json({ error: "Content is required" });
       break;
   }
 
-  // If there is no error, We will create a post.
+  // If there are no validation errors, create a new post
   try {
     const post = await Post.create({ title, content, user, slug });
     res.json(post);
   } catch (err) {
     console.error(err);
     res.status(400).json({
-      error: "Duplication error. Please try with different customer name",
+      error: "Duplication error. Please try with different customer title",
     });
   }
 };
@@ -55,6 +55,7 @@ exports.update = async (req, res) => {
   const { slug } = req.params;
   const { title, content, user } = req.body;
   try {
+    // Find and update a post
     const post = await Post.findOneAndUpdate(
       { slug },
       { title, content, user },
@@ -71,6 +72,7 @@ exports.remove = async (req, res) => {
   // console.log(req.params.slug);
   const { slug } = req.params;
   try {
+    // Find and remove a post by its slug
     const post = await Post.findOneAndRemove({ slug }).exec();
     res.json({ message: "A record deleted successfully" });
   } catch (err) {
