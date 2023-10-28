@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Create = () => {
   const [state, setState] = useState({
@@ -17,11 +18,32 @@ const Create = () => {
     setState({ ...state, [name]: event.target.value });
   };
 
+  // Creating a handler.
+  const handleSubmit = (event) => {
+    event.preventDefault(); // This method is prevent the page reload if the user press the button.
+    // console.table({ title, content, user });
+    axios
+      .post(`${process.env.REACT_APP_API}/post`, { title, content, user })
+      .then((response) => {
+        console.log(response);
+        // If success, we should clear out the field in the form.
+        setState({ ...state, title: "", content: "", user: "" });
+        // We have to notify the user as well due to process finished sucessfully.
+        alert(
+          `Customer title '${response.data.title}' is created successfully`
+        );
+      })
+      .catch((error) => {
+        console.log(error.response);
+        alert(error.response.data.error);
+      });
+  };
+
   return (
     <div className="container p-5">
       <h1>Create Customer Meeting Notes</h1>
       <br />
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="text-muted">Customer Title</label>
           <input
