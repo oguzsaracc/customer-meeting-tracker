@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import Routes from "./Routes";
 
 // We used Routes because all the routing process will be happening at Routes.js

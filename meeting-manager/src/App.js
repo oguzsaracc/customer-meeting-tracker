@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import axios from "axios";
 import "./css/custom-row-record.css";
-import "./css/custom-navigation.css";
 
 import { Link } from "react-router-dom";
 
